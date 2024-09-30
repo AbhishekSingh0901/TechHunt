@@ -27,11 +27,12 @@ const companySchema = new mongoose.Schema(
     },
     logo: {
       type: String,
-      required: true,
+      // required: true,
       match: /^https?:\/\//,
     },
     location: {
       type: String,
+      required: true,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
