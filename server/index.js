@@ -5,6 +5,7 @@ import cors from "cors";
 import connectDB from "./utils/db.js";
 import userRoutes from "./routes/user.routes.js";
 import companyRoutes from "./routes/company.routes.js";
+import jobRoutes from "./routes/job.routes.js";
 dotenv.config();
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(cors(corsOptions));
 //api routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/company", companyRoutes);
+app.use("/api/v1/job", jobRoutes);
 app.listen(process.env.PORT, () => {
   connectDB();
   console.log("server listening on port " + process.env.PORT);
