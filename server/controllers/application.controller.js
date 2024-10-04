@@ -7,12 +7,14 @@ export const applyJob = async (req, res) => {
     const { coverLetter, resume_uri } = req.body.coverLetter;
     const jobId = req.params.id;
     if (!jobId) {
-      return res.status(400).json({ msg: "Invalid job ID", success: false });
+      return res
+        .status(400)
+        .json({ message: "Invalid job ID", success: false });
     }
     // check if user is job seeker
     if (userId.role !== "job seeker") {
       res.status(403).json({
-        msg: "cannot aplly for jobs with recruiter id",
+        message: "cannot aplly for jobs with recruiter id",
         success: false,
       });
     }
@@ -23,7 +25,7 @@ export const applyJob = async (req, res) => {
     });
     if (existingApplication) {
       return res.status(400).json({
-        msg: "User has already applied for this job",
+        message: "User has already applied for this job",
         success: false,
       });
     }
@@ -31,7 +33,7 @@ export const applyJob = async (req, res) => {
     //check ifjob exists
     const job = await Job.findById(jobId);
     if (!job) {
-      return res.status(404).json({ msg: "Job not found", success: false });
+      return res.status(404).json({ message: "Job not found", success: false });
     }
 
     const newApplication = await Application.create({

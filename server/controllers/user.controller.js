@@ -4,19 +4,20 @@ import jwt from "jsonwebtoken";
 import { sendToken } from "../utils/jwtToken.js";
 
 export const register = async (req, res) => {
+  console.log(req);
   try {
     const { fullName, email, password, phoneNumber, role } = req.body;
     if (!fullName || !email || !password || !role || !phoneNumber) {
       return res
         .status(400)
-        .json({ msg: "All fields are required", success: false });
+        .json({ message: "All fields are required", success: false });
     }
 
     let user = await User.findOne({ email });
     if (user) {
       return res
         .status(400)
-        .json({ msg: "Email already exists", success: false });
+        .json({ message: "Email already exists", success: false });
     }
 
     user = await User.create({
@@ -40,7 +41,7 @@ export const login = async (req, res) => {
     if (!email || !password || !role) {
       return res
         .status(400)
-        .json({ msg: "All fields are required", success: false });
+        .json({ message: "All fields are required", success: false });
     }
 
     // validate role
@@ -48,7 +49,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ msg: "Invalid credentials", success: false });
+        .json({ message: "Invalid credentials", success: false });
     }
 
     //validate password
@@ -56,7 +57,7 @@ export const login = async (req, res) => {
     if (!isMatch) {
       return res
         .status(400)
-        .json({ msg: "Invalid credentials", success: false });
+        .json({ message: "Invalid credentials", success: false });
     }
 
     //generate and send jwt token

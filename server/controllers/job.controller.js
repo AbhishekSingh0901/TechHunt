@@ -32,7 +32,7 @@ export const postJob = async (req, res) => {
 
     if (req.id.role !== "recruiter") {
       return res.status(401).json({
-        msg: "Only recruiters can update company data",
+        message: "Only recruiters can update company data",
         success: false,
       });
     }

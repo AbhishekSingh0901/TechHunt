@@ -1,8 +1,24 @@
-import { useState } from "react";
-function App() {
-  const [count, setCount] = useState(0);
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home.page";
+import Login from "./pages/Login.page";
+import Signup from "./pages/Signup.page";
 
-  return <div className=" bg-blue-200">fsdjkfhjkah</div>;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+]);
+function App() {
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

@@ -6,18 +6,18 @@ export const registerCompany = async (req, res) => {
     if (!companyName || !description || !website || !employees || !location) {
       return res
         .status(400)
-        .json({ msg: "All fields are required", success: false });
+        .json({ message: "All fields are required", success: false });
     }
     let company = await Company.findOne({ name: companyName });
     if (company) {
       return res.status(400).json({
-        msg: "Company with the same name already exists",
+        message: "Company with the same name already exists",
         success: false,
       });
     }
     if (req.id.role !== "recruiter") {
       return res.status(401).json({
-        msg: "Only recruiters can register companies",
+        message: "Only recruiters can register companies",
         success: false,
       });
     }
@@ -47,7 +47,7 @@ export const getCompany = async (req, res) => {
     if (!companies.length) {
       return res
         .status(404)
-        .json({ msg: "No companies found", success: false });
+        .json({ message: "No companies found", success: false });
     }
     return res.status(200).json({ companies, success: true });
   } catch (err) {
@@ -60,7 +60,9 @@ export const getCompanyById = async (req, res) => {
     const companyId = req.params.id;
     const company = await Company.findById(companyId);
     if (!company) {
-      return res.status(404).json({ msg: "Company not found", success: false });
+      return res
+        .status(404)
+        .json({ message: "Company not found", success: false });
     }
     return res.status(200).json({ company, success: true });
   } catch (err) {
@@ -77,7 +79,7 @@ export const updateCompany = async (req, res) => {
 
     if (req.id.role !== "recruiter") {
       return res.status(401).json({
-        msg: "Only recruiters can update company data",
+        message: "Only recruiters can update company data",
         success: false,
       });
     }
@@ -93,11 +95,17 @@ export const updateCompany = async (req, res) => {
       { new: true }
     );
     if (!updatedCompany) {
-      return res.status(404).json({ msg: "Company not found", success: false });
+      return res
+        .status(404)
+        .json({ message: "Company not found", success: false });
     }
     return res
       .status(200)
-      .json({ msg: "company updated", company: updatedCompany, success: true });
+      .json({
+        message: "company updated",
+        company: updatedCompany,
+        success: true,
+      });
   } catch (err) {
     console.log(err);
   }
