@@ -18,6 +18,9 @@ import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../redux/authSlice";
+import { FiLoader } from "react-icons/fi";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -28,6 +31,8 @@ const loginSchema = z.object({
 });
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -38,6 +43,7 @@ function Login() {
   });
   async function onSubmit(data) {
     try {
+      dispatch(setLoading(true));
       const res = await axios.post(
         "http://localhost:3000/api/v1/user/login",
         data,
@@ -55,6 +61,8 @@ function Login() {
     } catch (e) {
       console.log(e);
       toast.error(e.response.data.message);
+    } finally {
+      setLoading(false);
     }
   }
   return (
@@ -131,7 +139,18 @@ function Login() {
               )}
             />
 
-            <Button type="submit">Submit</Button>
+            {loading ? (
+              <Button
+                variant="disabled"
+                disabled={true}
+                className="bg-slate-900 text-slate-50"
+              >
+                <FiLoader className=" animate-spin mr-2" />
+                <span>Loging in..</span>
+              </Button>
+            ) : (
+              <Button type="submit">Submit</Button>
+            )}
             <span className=" text-muted-foreground text-sm mx-auto -mt-3 text-in">
               Don&apos;t have an account ?{" "}
               <Link to="/signup">

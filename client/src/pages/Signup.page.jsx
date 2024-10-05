@@ -17,6 +17,9 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../redux/authSlice";
+import { FiLoader } from "react-icons/fi";
 
 const FormSchema = z.object({
   fullName: z.string().min(2, {
@@ -59,8 +62,13 @@ function Signup() {
       profile: "",
     },
   });
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
+
   const navigate = useNavigate();
+
   async function onSubmit(data) {
+    dispatch(setLoading(true));
     const formData = new FormData();
     formData.append("fullName", data.fullName);
     formData.append("email", data.email);
@@ -90,6 +98,8 @@ function Signup() {
     } catch (e) {
       console.log(e);
       toast.error(e.response.data.message);
+    } finally {
+      setLoading(false);
     }
   }
   return (
@@ -223,7 +233,18 @@ function Signup() {
                 )}
               />
             </div>
-            <Button type="submit">Submit</Button>
+            {loading ? (
+              <Button
+                variant="disabled"
+                disabled={true}
+                className="bg-slate-900 text-slate-50"
+              >
+                <FiLoader className=" animate-spin mr-2" />
+                <span>Signin up..</span>
+              </Button>
+            ) : (
+              <Button type="submit">Submit</Button>
+            )}
             <span className=" text-muted-foreground text-sm mx-auto -mt-3 text-in">
               Already have an account ?{" "}
               <Link to="/login">
