@@ -5,20 +5,24 @@ import { FiLogOut } from "react-icons/fi";
 import { FiEdit2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import illustration from "../../assets/illustration.png";
+import Logo from "../ui/logo";
 function Navbar() {
-  const user = false;
+  const user = true;
   return (
-    <div className=" bg-white flex justify-between items-center p-3 px-10">
-      <div>
-        <h1 className=" text-2xl font-bold text-neutral-700">
-          Tech<span className=" text-indigo-600">Hunt</span>
-        </h1>
-      </div>
-      <div className=" flex gap-5">
-        <ul className=" flex items-center gap-5">
-          <li>Home</li>
-          <li>Jobs</li>
-          <li>Browse</li>
+    <div className="border-b flex justify-between items-center p-3 px-4 md:px-10">
+      <Logo />
+      <div className=" flex gap-3 md:gap-5">
+        <ul className="hidden md:flex items-center font-medium gap-3 md:gap-5">
+          <Link to="/jobs">
+            <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-all">
+              For job seekers
+            </li>
+          </Link>
+          <Link>
+            <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-colors">
+              For recruiters
+            </li>
+          </Link>
         </ul>
         {user ? (
           <Popover asChild className="cursor-pointer">
@@ -59,7 +63,7 @@ function Navbar() {
               <Button variant="outline">Login</Button>
             </Link>
             <Link to="/signup">
-              <Button className=" bg-indigo-600 hover:bg-indigo-700">
+              <Button className=" bg-indigo-800 hover:bg-indigo-900">
                 SignUp
               </Button>
             </Link>
