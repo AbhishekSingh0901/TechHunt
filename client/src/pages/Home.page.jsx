@@ -5,7 +5,7 @@ import Notice from "../components/shared/Notice.component";
 function Home() {
   return (
     <div>
-      <Notice />
+      {/* <Notice /> */}
       <Navbar />
       <HeroSection />
       {/* <CategoryCarousel /> */}

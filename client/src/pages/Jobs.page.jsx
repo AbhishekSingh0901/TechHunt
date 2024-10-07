@@ -132,7 +132,7 @@ function Jobs() {
   };
 
   return (
-    <div className="">
+    <div>
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className=" w-full text-center my-16 font-bold grid grid-flow-col">

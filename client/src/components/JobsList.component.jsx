@@ -19,7 +19,7 @@ function JobsList({ jobs }) {
     <div className="max-w-4xl w-full">
       {jobs.map((job) => (
         <div
-          key={job.id}
+          key={job.title}
           className="border-b p-3 md:p-4 flex justify-between items-center hover:bg-neutral-50 transition-all duration-150"
         >
           <div className="flex gap-3 items-center">

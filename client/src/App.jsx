@@ -3,6 +3,7 @@ import Home from "./pages/Home.page";
 import Login from "./pages/Login.page";
 import Signup from "./pages/Signup.page";
 import Jobs from "./pages/Jobs.page";
+import Recruiters from "./pages/Recruiters.page";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/jobs",
     element: <Jobs />,
+  },
+  {
+    path: "/recruiters",
+    element: <Recruiters />,
   },
 ]);
 function App() {

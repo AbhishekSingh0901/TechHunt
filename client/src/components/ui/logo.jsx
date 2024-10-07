@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 
-function Logo() {
+function Logo({ monotone = false }) {
   return (
     <Link to="/">
-      <h3 className=" font-arvo text-2xl md:text-3xl font-bold text-neutral-900">
-        Tech:<span className=" text-indigo-900">Hunt</span>
+      <h3
+        className={`font-arvo text-2xl md:text-3xl font-bold  ${
+          monotone ? "text-neutral-400" : "text-neutral-900"
+        }`}
+      >
+        Tech:<span className={!monotone ? "text-indigo-900" : ""}>Hunt</span>
       </h3>
     </Link>
   );

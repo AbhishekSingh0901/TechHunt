@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import illustration from "../../assets/illustration.png";
 import Logo from "../ui/logo";
 function Navbar() {
-  const user = true;
+  const user = false;
   return (
     <div className="border-b flex justify-between items-center p-3 px-4 md:px-10">
       <Logo />
@@ -18,12 +18,14 @@ function Navbar() {
               For job seekers
             </li>
           </Link>
-          <Link>
+          <Link to="/recruiters">
             <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-colors">
               For recruiters
             </li>
           </Link>
         </ul>
+      </div>
+      <div>
         {user ? (
           <Popover asChild className="cursor-pointer">
             <PopoverTrigger>
