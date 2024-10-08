@@ -4,6 +4,7 @@ import Login from "./pages/Login.page";
 import Signup from "./pages/Signup.page";
 import Jobs from "./pages/Jobs.page";
 import Recruiters from "./pages/Recruiters.page";
+import AllJobs from "./pages/AllJobs.page";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/recruiters",
     element: <Recruiters />,
+  },
+  {
+    path: "/alljobs",
+    element: <AllJobs />,
   },
 ]);
 function App() {

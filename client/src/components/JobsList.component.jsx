@@ -14,7 +14,7 @@
 
 import { Button } from "./ui/button";
 
-function JobsList({ jobs }) {
+function JobsList({ jobs, withLogo = true }) {
   return (
     <div className="max-w-4xl w-full">
       {jobs.map((job) => (
@@ -23,11 +23,13 @@ function JobsList({ jobs }) {
           className="border-b p-3 md:p-4 flex justify-between items-center hover:bg-neutral-50 transition-all duration-150"
         >
           <div className="flex gap-3 items-center">
-            <img
-              src={job.company.logo}
-              className="h-8 md:h-10"
-              alt={job.company.title}
-            />
+            {withLogo && (
+              <img
+                src={job.company.logo}
+                className="h-8 md:h-10"
+                alt={job.company.title}
+              />
+            )}
             <div>
               <h2 className="font-medium">{job.title}</h2>
               <div className="flex gap-2">

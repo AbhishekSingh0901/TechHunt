@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import illustration from "../../assets/illustration.png";
 import Logo from "../ui/logo";
 function Navbar() {
-  const user = false;
+  const user = true;
   return (
     <div className="border-b flex justify-between items-center p-3 px-4 md:px-10">
       <Logo />
@@ -27,38 +27,40 @@ function Navbar() {
       </div>
       <div>
         {user ? (
-          <Popover asChild className="cursor-pointer">
-            <PopoverTrigger>
-              <Avatar>
-                <AvatarImage src={illustration} />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </PopoverTrigger>
-            <PopoverContent className="w-80">
-              <div className=" flex gap-2 border-b">
+          <div className="flex items-center">
+            <Popover asChild className="cursor-pointer">
+              <PopoverTrigger>
                 <Avatar>
                   <AvatarImage src={illustration} />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <div>
-                  <h4 className=" font-medium">Full Name</h4>
-                  <p className=" text-sm text-muted-foreground">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className=" flex gap-2 border-b">
+                  <Avatar>
+                    <AvatarImage src={illustration} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h4 className=" font-medium">Full Name</h4>
+                    <p className=" text-sm text-muted-foreground">
+                      Lorem ipsum dolor sit amet.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className=" mt-3 flex flex-col items-start">
-                <Button variant="link" className="p-0 gap-1">
-                  <FiEdit2 />
-                  Edit Profile
-                </Button>
-                <Button variant="link" className="p-0 gap-1">
-                  <FiLogOut />
-                  Logout
-                </Button>
-              </div>
-            </PopoverContent>
-          </Popover>
+                <div className=" mt-3 flex flex-col items-start">
+                  <Button variant="link" className="p-0 gap-1">
+                    <FiEdit2 />
+                    Edit Profile
+                  </Button>
+                  <Button variant="link" className="p-0 gap-1">
+                    <FiLogOut />
+                    Logout
+                  </Button>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
         ) : (
           <div className=" flex gap-3">
             <Link to="/login">

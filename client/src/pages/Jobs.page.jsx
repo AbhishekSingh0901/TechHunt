@@ -5,8 +5,8 @@ import jobsHero2 from "../assets/jobshero-2.webp";
 import { HoverEffect } from "../components/ui/card-hover-effect";
 import JobsList from "../components/JobsList.component";
 import { Button } from "../components/ui/button";
-import { FaRightLeft, FaRightLong } from "react-icons/fa6";
 import Footer from "../components/shared/Footer.component";
+import { Link } from "react-router-dom";
 
 const companies = [
   {
@@ -170,9 +170,11 @@ function Jobs() {
             <h1 className="text-3xl md:text-4xl  font-medium ">
               Latest Trending Jobs
             </h1>
-            <Button variant="link" className="md:text-xl">
-              View all jobs &rarr;
-            </Button>
+            <Link to="/alljobs">
+              <Button variant="link" className="md:text-xl">
+                View all jobs &rarr;
+              </Button>
+            </Link>
           </div>
           <div className=" flex flex-col gap-4 lg:flex-row justify-between mb-16">
             <JobsList jobs={demoJobs} />
