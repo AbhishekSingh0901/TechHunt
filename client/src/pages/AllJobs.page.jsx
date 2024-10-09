@@ -1,8 +1,15 @@
-import { FaBox, FaMessage, FaRegUser } from "react-icons/fa6";
-import { MdOutlineWorkOutline } from "react-icons/md";
+import {
+  FaBox,
+  FaBriefcase,
+  FaEarlybirds,
+  FaMessage,
+  FaUser,
+} from "react-icons/fa6";
 import JobsFilter from "../components/JobsFilter.component";
 import JobsList from "../components/JobsList.component";
 import Navbar from "../components/shared/Navbar.component";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const companies = [
   {
@@ -110,30 +117,127 @@ const demoJobs = [
   },
 ];
 
+const sidebarComps = [
+  {
+    title: "Profile",
+    icon: <FaUser />,
+  },
+  {
+    title: "Jobs",
+    icon: <FaBriefcase />,
+  },
+  {
+    title: "Messages",
+    icon: <FaMessage />,
+  },
+  {
+    title: "Applied",
+    icon: <FaBox />,
+  },
+];
+
+const techSkills = [
+  "JavaScript",
+  "React.js",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "SQL",
+  "Python",
+  "Django",
+  "Flask",
+  "HTML5",
+  "CSS3",
+  "Tailwind CSS",
+  "TypeScript",
+  "GraphQL",
+  "REST APIs",
+  "Git",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "Azure",
+  "Google Cloud Platform (GCP)",
+  "Next.js",
+  "Vue.js",
+  "Svelte",
+  "Webpack",
+  "Bash/Shell Scripting",
+  "Jenkins",
+  "Terraform",
+  "Java",
+  "C++",
+];
+
 function AllJobs() {
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  const url = useLocation().pathname;
+
+  const editSkills = (skill) => {
+    const hasSkill = selectedSkills.includes(skill);
+
+    if (!hasSkill) {
+      // Add skill if not already in the array
+      setSelectedSkills((selectedSkills) => [...selectedSkills, skill]);
+    } else {
+      // Remove skill if it already exists in the array
+      setSelectedSkills((selectedSkills) =>
+        selectedSkills.filter((s) => s !== skill)
+      );
+    }
+  };
+
   return (
     <div>
       <Navbar />
       {/* Sidebar */}
-      <div className="flex relative">
-        <div className="w-24 h-screen pt-20 text-2xl bg-indigo-50 sticky top-0 flex flex-col items-center gap-4">
-          <FaRegUser />
-          <MdOutlineWorkOutline />
-          <FaMessage />
-          <FaBox />
+      <div className="flex flex-col-reverse md:flex-row relative">
+        <div className="sticky h-20 w-full bottom-0 text-xl md:text-2xl md:w-24 md:h-screen md:top-0 md:pt-5  text-indigo-200 bg-indigo-900 flex md:flex-col items-center justify-evenly md:justify-start p-2 md:gap-4 gap-3">
+          {sidebarComps.map((comp) => (
+            <div
+              key={comp.title}
+              onClick={() => console.log(comp.title)}
+              className={` hover:bg-indigo-950 hover:shadow-lg w-16 h-16 md:h-fit md:w-full flex flex-col justify-center items-center gap-1 p-2 rounded-md cursor-pointer transition-all duration-150 ${
+                url.includes(comp.title.toLowerCase()) ? "bg-indigo-950 " : ""
+              }`}
+            >
+              {comp.icon}
+              <span className="hidden text-sm md:block">{comp.title}</span>
+            </div>
+          ))}
+          <FaEarlybirds className="hidden md:block sticky top-[92vh] text-5xl opacity-[0.03]" />
         </div>
         <div className="flex-1">
           <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
-            <h1 className="text-4xl md:text-5xl mt-5 lg:text-6xl mb-4 font-semibold mx-auto ">
-              Search For Jobs
-            </h1>
             <h3 className="tracking-[5px] font-semibold uppercase bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text">
               Your next career move !
             </h3>
+            <h1 className="text-4xl md:text-5xl mt-2 lg:text-6xl mb-4 font-semibold mx-auto ">
+              Search For Jobs
+            </h1>
             <JobsFilter />
-            <JobsList jobs={demoJobs} withLogo={false} />
-            <JobsList jobs={demoJobs} withLogo={false} />
-            <JobsList jobs={demoJobs} withLogo={false} />
+            <div className="flex flex-col-reverse gap-4 lg:flex-row mb-16">
+              <div className="flex-1">
+                <JobsList jobs={demoJobs} withLogo={false} />
+                <JobsList jobs={demoJobs} withLogo={false} />
+                <JobsList jobs={demoJobs} withLogo={false} />
+              </div>
+              <div className="p-3 lg:p-4 border rounded-md lg:max-w-[300px] h-fit lg:sticky lg:top-5">
+                {techSkills.map((techSkill) => (
+                  <span
+                    onClick={() => editSkills(techSkill)}
+                    key={techSkill}
+                    className={` cursor-pointer text-sm  mx-2 p-1 px-2 hover:bg-indigo-400 hover:text-white border border-indigo-300 inline-block mb-2 rounded-full ${
+                      selectedSkills.includes(techSkill)
+                        ? "bg-indigo-600 text-white"
+                        : "text-card-foreground"
+                    }`}
+                  >
+                    {techSkill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

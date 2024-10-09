@@ -1,17 +1,4 @@
-// {
-//   title: "Frontend Developer",
-//   description:
-//     "Develop and maintain the front-end of our web applications using React.js.",
-//   company: companies[0], // Microsoft
-//   location: "San Francisco, CA",
-//   salary: 120000,
-//   deadline: new Date("2024-12-31"),
-//   skills: ["JavaScript", "React", "HTML", "CSS"],
-//   created_by: "60d2f9f4c75b2e1f84c8d001",
-//   experience: "2-4 years",
-//   applications: [],
-// },
-
+import { FaRegBookmark } from "react-icons/fa6";
 import { Button } from "./ui/button";
 
 function JobsList({ jobs, withLogo = true }) {
@@ -36,18 +23,28 @@ function JobsList({ jobs, withLogo = true }) {
                 {job.skills.slice(0, 3).map((skill) => (
                   <span
                     key={skill}
-                    className="cursor-default text-xs md:text-sm text-muted-foreground bg-indigo-50 p-0.5 px-2 rounded-full"
+                    className="cursor-default text-[10px] md:text-sm text-muted-foreground bg-indigo-50 p-0.5 px-2 rounded-full"
                   >
-                    {skill}
+                    {skill.split(" ").length === 1
+                      ? skill
+                      : skill
+                          .split(" ")
+                          .map((word) => word[0].toUpperCase())
+                          .join("")}
                   </span>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="flex gap-2 md:gap-3">
-            <Button variant="outline">Save</Button>
+          <div className="flex gap-2 md:gap-3 ">
+            <span className="text-muted-foreground hidden md:block md:text-xs ">
+              {job.location}
+            </span>
             <Button>Apply</Button>
+            <Button variant="outline">
+              <FaRegBookmark />
+            </Button>
           </div>
         </div>
       ))}

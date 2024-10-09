@@ -53,7 +53,7 @@ const demoJobs = [
     description:
       "Develop and maintain the front-end of our web applications using React.js.",
     company: companies[0], // Microsoft
-    location: "San Francisco, CA",
+    location: "San Francisco",
     salary: 120000,
     deadline: new Date("2024-12-31"),
     skills: ["JavaScript", "React", "HTML", "CSS"],
@@ -78,7 +78,7 @@ const demoJobs = [
     title: "Full Stack Developer",
     description: "Build and maintain web applications using the MERN stack.",
     company: companies[2], // Google
-    location: "New York, NY",
+    location: "New York",
     salary: 130000,
     deadline: new Date("2025-01-15"),
     skills: ["React", "Node.js", "MongoDB", "Express"],
@@ -91,7 +91,7 @@ const demoJobs = [
     description:
       "Manage infrastructure, CI/CD pipelines, and deployment processes.",
     company: companies[3], // Meta
-    location: "Austin, TX",
+    location: "Austin",
     salary: 115000,
     deadline: new Date("2024-10-31"),
     skills: ["AWS", "Docker", "Kubernetes", "CI/CD"],
@@ -104,7 +104,7 @@ const demoJobs = [
     description:
       "Analyze large datasets and develop machine learning models for predictive analytics.",
     company: companies[0], // Microsoft
-    location: "Seattle, WA",
+    location: "Seattle",
     salary: 135000,
     deadline: new Date("2024-11-15"),
     skills: ["Python", "Machine Learning", "SQL", "Data Visualization"],
