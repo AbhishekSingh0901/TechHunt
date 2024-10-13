@@ -10,6 +10,7 @@ import JobsList from "../components/JobsList.component";
 import Navbar from "../components/shared/Navbar.component";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import Profile from "./Profile.page";
 
 const companies = [
   {
@@ -190,9 +191,10 @@ function AllJobs() {
   return (
     <div>
       <Navbar />
-      {/* Sidebar */}
-      <div className="flex flex-col-reverse md:flex-row relative">
-        <div className="sticky h-20 w-full bottom-0 text-xl md:text-2xl md:w-24 md:h-screen md:top-0 md:pt-5  text-indigo-200 bg-indigo-900 flex md:flex-col items-center justify-evenly md:justify-start p-2 md:gap-4 gap-3">
+
+      <div className="flex flex-col-reverse md:flex-row relative ">
+        {/* Sidebar */}
+        <div className="sticky h-20 w-full  bottom-0 text-xl md:text-2xl md:w-24 md:h-screen md:top-0 md:pt-5  text-indigo-200 bg-indigo-900 flex md:flex-col items-center justify-evenly md:justify-start p-2 md:gap-4 gap-3">
           {sidebarComps.map((comp) => (
             <div
               key={comp.title}
@@ -207,7 +209,8 @@ function AllJobs() {
           ))}
           <FaEarlybirds className="hidden md:block sticky top-[92vh] text-5xl opacity-[0.03]" />
         </div>
-        <div className="flex-1">
+        {/* All Jobs */}
+        {/* <div className="flex-1">
           <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
             <h3 className="tracking-[5px] font-semibold uppercase bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text">
               Your next career move !
@@ -251,7 +254,9 @@ function AllJobs() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        {/* Profile */}
+        <Profile />
       </div>
     </div>
   );
