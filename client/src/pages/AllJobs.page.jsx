@@ -218,9 +218,21 @@ function AllJobs() {
             <JobsFilter />
             <div className="flex flex-col-reverse gap-4 lg:flex-row mb-16">
               <div className="flex-1">
-                <JobsList jobs={demoJobs} withLogo={false} />
-                <JobsList jobs={demoJobs} withLogo={false} />
-                <JobsList jobs={demoJobs} withLogo={false} />
+                <JobsList
+                  jobs={demoJobs}
+                  withCompanyName={true}
+                  withLogo={true}
+                />
+                <JobsList
+                  jobs={demoJobs}
+                  withCompanyName={true}
+                  withLogo={true}
+                />
+                <JobsList
+                  jobs={demoJobs}
+                  withCompanyName={true}
+                  withLogo={true}
+                />
               </div>
               <div className="p-3 lg:p-4 border rounded-md lg:max-w-[300px] h-fit lg:sticky lg:top-5">
                 {techSkills.map((techSkill) => (

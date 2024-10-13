@@ -177,7 +177,7 @@ function Jobs() {
             </Link>
           </div>
           <div className=" flex flex-col gap-4 lg:flex-row justify-between mb-16">
-            <JobsList jobs={demoJobs} />
+            <JobsList jobs={demoJobs} withCompanyName={true} />
             <div className="p-3 lg:p-5 border rounded-md">
               <h4 className="text-2xl font-medium mb-4">
                 Level up you job search

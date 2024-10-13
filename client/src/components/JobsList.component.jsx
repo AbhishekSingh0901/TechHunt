@@ -1,7 +1,7 @@
 import { FaRegBookmark } from "react-icons/fa6";
 import { Button } from "./ui/button";
 
-function JobsList({ jobs, withLogo = true }) {
+function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
   return (
     <div className="max-w-4xl w-full">
       {jobs.map((job) => (
@@ -9,7 +9,7 @@ function JobsList({ jobs, withLogo = true }) {
           key={job.title}
           className="border-b p-3 md:p-4 flex justify-between items-center hover:bg-neutral-50 transition-all duration-150"
         >
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3">
             {withLogo && (
               <img
                 src={job.company.logo}
@@ -18,6 +18,11 @@ function JobsList({ jobs, withLogo = true }) {
               />
             )}
             <div>
+              {withCompanyName && (
+                <p className="text-sm text-muted-foreground">
+                  {job.company.title}
+                </p>
+              )}
               <h2 className="font-medium">{job.title}</h2>
               <div className="flex gap-2">
                 {job.skills.slice(0, 3).map((skill) => (
