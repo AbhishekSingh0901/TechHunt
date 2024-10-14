@@ -194,7 +194,7 @@ function AllJobs() {
 
       <div className="flex flex-col-reverse md:flex-row relative ">
         {/* Sidebar */}
-        <div className="sticky h-20 w-full  bottom-0 text-xl md:text-2xl md:w-24 md:h-screen md:top-0 md:pt-5  text-indigo-200 bg-indigo-900 flex md:flex-col items-center justify-evenly md:justify-start p-2 md:gap-4 gap-3">
+        <div className="sticky h-20 z-50 w-full  bottom-0 text-xl md:text-2xl md:w-24 md:h-screen md:top-0 md:pt-5  text-indigo-200 bg-indigo-900 flex md:flex-col items-center justify-evenly md:justify-start p-2 md:gap-4 gap-3">
           {sidebarComps.map((comp) => (
             <div
               key={comp.title}

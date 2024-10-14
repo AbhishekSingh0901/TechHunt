@@ -5,6 +5,7 @@ import Signup from "./pages/Signup.page";
 import Jobs from "./pages/Jobs.page";
 import Recruiters from "./pages/Recruiters.page";
 import AllJobs from "./pages/AllJobs.page";
+import Resume from "./pages/Resume.page";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/alljobs",
     element: <AllJobs />,
+  },
+  {
+    path: "/resume",
+    element: <Resume />,
   },
 ]);
 function App() {

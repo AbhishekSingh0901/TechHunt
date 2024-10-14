@@ -45,10 +45,10 @@ function Profile() {
   return (
     <div className="flex-1 rounded-l-2xl">
       <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
-        <div className="flex gap-5 flex-col items-center md:items-start md:flex-row">
+        <div className="flex gap-5 xl:gap-8 flex-col items-center md:items-start md:flex-row">
           <img
             src={demoUser.profile.profilePhoto}
-            className=" h-40 w-40 rounded-full "
+            className="h-40 w-40 xl:h-52 xl:w-52 rounded-full "
           />
           <div className="flex flex-col gap-4">
             <div className="pb-3 border-b">
