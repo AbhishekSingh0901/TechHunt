@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function Benefits() {
   return (
-    <div className="flex flex-col justify-center lg:flex-row w-full mx-auto max-w-7xl">
+    <div className="flex flex-col justify-center lg:flex-row w-full mx-auto max-w-7xl overflow-hidden">
       <motion.div
         viewport={{ once: true }}
         initial={{ opacity: 0, x: -50 }}

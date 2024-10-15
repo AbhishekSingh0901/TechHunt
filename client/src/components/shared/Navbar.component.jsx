@@ -11,7 +11,7 @@ function Navbar() {
   const user = true;
   return (
     <motion.div
-      className="border-b flex justify-between items-center p-3 px-4 md:px-10"
+      className="border-b flex justify-between  items-center p-3 px-4 md:px-10"
       initial={{ opacity: 0, y: -15 }}
       whileInView={{ opacity: 1, y: 0 }}
     >
@@ -35,7 +35,7 @@ function Navbar() {
           </Link>
         </ul>
       </div>
-      <div>
+      <div className="w-20">
         {user ? (
           <div className="flex items-center">
             <Popover asChild className="cursor-pointer">
