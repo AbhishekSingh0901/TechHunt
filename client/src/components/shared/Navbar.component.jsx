@@ -6,10 +6,15 @@ import { FiEdit2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import illustration from "../../assets/illustration.png";
 import Logo from "../ui/logo";
+import { motion } from "framer-motion";
 function Navbar() {
   const user = true;
   return (
-    <div className="border-b flex justify-between items-center p-3 px-4 md:px-10">
+    <motion.div
+      className="border-b flex justify-between items-center p-3 px-4 md:px-10"
+      initial={{ opacity: 0, y: -15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+    >
       <Logo />
       <div className=" flex gap-3 md:gap-5">
         <ul className="hidden md:flex items-center font-medium gap-3 md:gap-5">
@@ -21,6 +26,11 @@ function Navbar() {
           <Link to="/recruiters">
             <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-colors">
               For recruiters
+            </li>
+          </Link>
+          <Link to="/resume">
+            <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-colors">
+              Resume generator
             </li>
           </Link>
         </ul>
@@ -74,7 +84,7 @@ function Navbar() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

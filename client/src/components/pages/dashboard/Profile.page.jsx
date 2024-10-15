@@ -1,5 +1,5 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa6";
-import { FileUpload } from "../components/ui/file-upload";
+import { FileUpload } from "../../ui/file-upload";
 
 const demoUser = {
   fullName: "John Doe",

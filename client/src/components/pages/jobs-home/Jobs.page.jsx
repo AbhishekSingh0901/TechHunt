@@ -1,11 +1,9 @@
-import Navbar from "../components/shared/Navbar.component";
-import { PlaceholdersAndVanishInput } from "../components/ui/placeholders-and-vanish-input";
-import jobsHero1 from "../assets/jobshero-1.webp";
-import jobsHero2 from "../assets/jobshero-2.webp";
-import { HoverEffect } from "../components/ui/card-hover-effect";
-import JobsList from "../components/JobsList.component";
-import { Button } from "../components/ui/button";
-import Footer from "../components/shared/Footer.component";
+import Navbar from "../../shared/Navbar.component";
+import { PlaceholdersAndVanishInput } from "../../ui/placeholders-and-vanish-input";
+import { HoverEffect } from "../../ui/card-hover-effect";
+import JobsList from "../../JobsList.component";
+import { Button } from "../../ui/button";
+import Footer from "../../shared/Footer.component";
 import { Link } from "react-router-dom";
 
 const companies = [
@@ -136,7 +134,11 @@ function Jobs() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className=" w-full text-center my-16 font-bold grid grid-flow-col">
-          <img src={jobsHero1} alt="" className=" hidden lg:block" />
+          <img
+            src="./assets/jobshero-1.webp"
+            alt=""
+            className=" hidden lg:block"
+          />
 
           <div className=" w-full text-center">
             <span className=" tracking-[5px] bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text">
@@ -147,7 +149,7 @@ function Jobs() {
             </h1>
           </div>
           <img
-            src={jobsHero2}
+            src="./assets/jobshero-2.webp"
             alt=""
             className="hidden lg:block object-cover"
           />

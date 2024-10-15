@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Footer from "../components/shared/Footer.component";
-import Navbar from "../components/shared/Navbar.component";
-import { Button } from "../components/ui/button";
-import { AnimatedTabs } from "../components/AnimatedTab.component";
+import Footer from "../../shared/Footer.component";
+import Navbar from "../../shared/Navbar.component";
+import { Button } from "../../ui/button";
+import { AnimatedTabs } from "../../AnimatedTab.component";
 
 function Recruiters() {
   return (

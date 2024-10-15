@@ -1,4 +1,4 @@
-import Navbar from "../components/shared/Navbar.component";
+import Navbar from "../../shared/Navbar.component";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,16 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "../redux/authSlice";
+import { setLoading } from "../../../redux/authSlice";
 import { FiLoader } from "react-icons/fi";
-
-import loginImage from "../assets/login.jpg";
-import Logo from "../components/ui/logo";
+import Logo from "../../ui/logo";
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),

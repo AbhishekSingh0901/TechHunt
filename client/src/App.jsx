@@ -1,11 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.page";
-import Login from "./pages/Login.page";
-import Signup from "./pages/Signup.page";
-import Jobs from "./pages/Jobs.page";
-import Recruiters from "./pages/Recruiters.page";
-import AllJobs from "./pages/AllJobs.page";
-import Resume from "./pages/Resume.page";
+import Home from "./components/pages/home/Home.page";
+import Login from "./components/pages/login/Login.page";
+import Signup from "./components/pages/signup/Signup.page";
+import Jobs from "./components/pages/jobs-home/Jobs.page";
+import Recruiters from "./components/pages/recruiteres-home/Recruiters.page";
+import Resume from "./components/pages/resume-builder-home/Resume.page";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +26,6 @@ const router = createBrowserRouter([
   {
     path: "/recruiters",
     element: <Recruiters />,
-  },
-  {
-    path: "/alljobs",
-    element: <AllJobs />,
   },
   {
     path: "/resume",
