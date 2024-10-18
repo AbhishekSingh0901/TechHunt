@@ -8,7 +8,7 @@ import illustration from "../../assets/illustration.png";
 import Logo from "../ui/logo";
 import { motion } from "framer-motion";
 function Navbar() {
-  const user = true;
+  const user = false;
   return (
     <motion.div
       className="border-b flex justify-between  items-center p-3 px-4 md:px-10"
@@ -17,7 +17,7 @@ function Navbar() {
     >
       <Logo />
       <div className=" flex gap-3 md:gap-5">
-        <ul className="hidden md:flex items-center font-medium gap-3 md:gap-5">
+        <ul className="hidden md:flex items-center font-medium gap-3 md:gap-5 lg:text-base text-sm">
           <Link to="/jobs">
             <li className="hover:text-indigo-800 border-indigo-800 hover:border-b transition-all">
               For job seekers
@@ -35,7 +35,7 @@ function Navbar() {
           </Link>
         </ul>
       </div>
-      <div className="w-20">
+      <div className="w-40 flex justify-end">
         {user ? (
           <div className="flex items-center">
             <Popover asChild className="cursor-pointer">

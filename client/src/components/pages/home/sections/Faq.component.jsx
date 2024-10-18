@@ -60,7 +60,7 @@ function Faq() {
             whileInView={{
               opacity: 1,
               y: 0,
-              transition: { delay: idx * 0.1 },
+              transition: { delay: idx * 0.05 },
             }}
           >
             <AccordionItem value={`item-${idx + 1}`}>

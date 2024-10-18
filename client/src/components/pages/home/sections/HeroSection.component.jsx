@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <div className="h-full w-full dark:bg-black  dark:bg-grid-white/[0.2] bg-grid-black/[0.15] relative flex items-center justify-center mb-14">
+    <div className="h-full w-full dark:bg-black  dark:bg-dot-white/[0.2] bg-dot-black/[0.3] relative flex items-center justify-center mb-14">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="flex flex-col lg:flex-row mb-20 justify-between gap-10 my-20 w-screen overflow-x-clip">
         <motion.div
@@ -19,7 +19,7 @@ function HeroSection() {
               a <Cover>: Speed Boost </Cover>
             </span>
           </h1>
-          <p className=" text-lg md:text-xl font-semibold mt-5 text-indigo-900 border-b pb-4 border-indigo-900 uppercase tracking-widest">
+          <p className=" p-3 md:text-xl text-center lg:text-left font-semibold mt-5 text-indigo-900 border-b pb-4 border-indigo-900 uppercase tracking-widest">
             Find the best tech talent in the world
           </p>
         </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "../../../ui/button";
+import { Link } from "react-router-dom";
 
 function GetStarted() {
   return (
@@ -24,7 +25,9 @@ function GetStarted() {
             To apply to jobs with one-click and connect with founders and
             recruiters searching for your skills.
           </p>
-          <Button>Create your profile</Button>
+          <Link to="/signup">
+            <Button>Create your profile</Button>
+          </Link>
         </div>
       </motion.div>
     </div>

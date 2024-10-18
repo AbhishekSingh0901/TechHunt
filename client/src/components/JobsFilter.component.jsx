@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+// import { useState } from "react";
 import { IoFilter } from "react-icons/io5";
 import { RiArrowDownWideFill } from "react-icons/ri";
 function JobsFilter() {
-  const [openFilters, setOpenFilter] = useState(false);
+  // const [openFilters, setOpenFilter] = useState(false);
 
   return (
     <div className=" text-xl w-full border p-3 mb-3">

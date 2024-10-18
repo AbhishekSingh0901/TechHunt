@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../../redux/authSlice";
 import { FiLoader } from "react-icons/fi";
 import Logo from "../../ui/logo";
+import { motion } from "framer-motion";
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -65,13 +66,22 @@ function Login() {
       setLoading(false);
     }
   }
+
   return (
-    <div className="h-screen md:grid grid-flow-col lg:grid-cols-3 md:grid-cols-2">
-      <img
+    <div className="h-screen md:grid grid-flow-col lg:grid-cols-3 md:grid-cols-2 overflow-hidden">
+      <motion.img
+        viewport={{ once: true }}
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
         src="/assets/rocket2.jpeg"
-        className="h-screen object-cover lg:col-span-2 hidden md:block overflow-hidden"
+        className="h-screen object-cover rounded-r-2xl shadow-3xl lg:col-span-2 hidden md:block overflow-hidden"
       />
-      <div className="p-10 h-screen overflow-scroll scrollbar-hidden">
+      <motion.div
+        viewport={{ once: true }}
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        className="p-10 h-screen overflow-scroll scrollbar-hidden"
+      >
         <Logo />
         <div className=" max-w-6xl  mt-20 mx-auto p-4">
           <Form {...form}>
@@ -183,7 +193,7 @@ function Login() {
             </form>
           </Form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

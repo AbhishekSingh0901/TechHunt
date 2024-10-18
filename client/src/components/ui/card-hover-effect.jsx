@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
@@ -14,8 +14,7 @@ export const HoverEffect = ({ items, className }) => {
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          to="/"
+        <div
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
@@ -38,19 +37,22 @@ export const HoverEffect = ({ items, className }) => {
               />
             )}
           </AnimatePresence>
-          <Card item={item}>
+          <Card item={item} idx={idx}>
             <CardTitle logo={item.logo}>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </Link>
+        </div>
       ))}
     </div>
   );
 };
 
-export const Card = ({ className, children, item }) => {
+export const Card = ({ className, children, item, idx }) => {
   return (
-    <div
+    <motion.div
+      viewport={{ once: true }}
+      initial={{ opacity: 0, x: -100 * (idx + 1) }}
+      whileInView={{ opacity: 1, x: 0, transition: { delay: 0.05 * idx } }}
       className={cn(
         "rounded-md h-full w-full p-4 overflow-hidden border dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
@@ -60,7 +62,7 @@ export const Card = ({ className, children, item }) => {
         <div className="p-4">{children}</div>
       </div>
       <CardFooter>{item.numJobs}</CardFooter>
-    </div>
+    </motion.div>
   );
 };
 export const CardTitle = ({ className, children, logo }) => {
@@ -91,7 +93,7 @@ export const CardDescription = ({ className, children }) => {
   );
 };
 
-export const CardFooter = ({ className, children }) => {
+export const CardFooter = ({ children }) => {
   return (
     <div className="absolute bottom-2 left-7">
       <p className="text-xs p-2 border border-indigo-100 text-indigo-900 group-hover:bg-indigo-800 group-hover:text-white transition-all duration-200 rounded-md">
