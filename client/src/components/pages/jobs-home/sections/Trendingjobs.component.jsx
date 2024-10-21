@@ -44,6 +44,7 @@ const companies = [
 
 const demoJobs = [
   {
+    id: 1,
     title: "Frontend Developer",
     description:
       "Develop and maintain the front-end of our web applications using React.js.",
@@ -57,6 +58,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 2,
     title: "Backend Developer",
     description:
       "Work on server-side logic and database operations using Node.js and MongoDB.",
@@ -70,6 +72,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 3,
     title: "Full Stack Developer",
     description: "Build and maintain web applications using the MERN stack.",
     company: companies[2], // Google
@@ -82,6 +85,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 4,
     title: "DevOps Engineer",
     description:
       "Manage infrastructure, CI/CD pipelines, and deployment processes.",
@@ -95,6 +99,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 5,
     title: "Data Scientist",
     description:
       "Analyze large datasets and develop machine learning models for predictive analytics.",

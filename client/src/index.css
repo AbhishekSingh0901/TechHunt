@@ -104,3 +104,12 @@ body::-webkit-scrollbar-thumb {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}

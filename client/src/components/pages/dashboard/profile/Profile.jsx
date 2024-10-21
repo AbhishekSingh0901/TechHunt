@@ -1,5 +1,6 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa6";
 import { FileUpload } from "../../../ui/file-upload";
+import { motion } from "framer-motion";
 
 const demoUser = {
   fullName: "John Doe",
@@ -43,21 +44,34 @@ const demoUser = {
 
 function Profile() {
   return (
-    <div className="flex-1 rounded-l-2xl">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
         <div className="flex gap-5 xl:gap-8 flex-col items-center md:items-start md:flex-row">
-          <img
+          <motion.img
+            viewport={{ once: true }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             src={demoUser.profile.profilePhoto}
             className="h-40 w-40 xl:h-52 xl:w-52 rounded-full "
           />
           <div className="flex flex-col gap-4">
-            <div className="pb-3 border-b">
+            <motion.div
+              viewport={{ once: true }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="pb-3 border-b"
+            >
               <h1 className="text-4xl lg:text-5xl mb-3  font-medium text-neutral-800">
                 {demoUser.fullName}
               </h1>
               <p className="text-neutral-600 ">{demoUser.profile.bio}</p>
-            </div>
-            <div className="pb-3 border-b">
+            </motion.div>
+            <motion.div
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0, transition: { delay: 0.05 } }}
+              className="pb-3 border-b"
+            >
               <h3 className="tracking-[5px] text-xl font-semibold uppercase mb-3 text-indigo-700">
                 Skills
               </h3>
@@ -70,8 +84,13 @@ function Profile() {
                   {skill}
                 </span>
               ))}
-            </div>
-            <div className="pb-3 border-b">
+            </motion.div>
+            <motion.div
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
+              className="pb-3 border-b"
+            >
               <h3 className="tracking-[5px] text-xl font-semibold uppercase mb-3 text-indigo-700">
                 Contact
               </h3>
@@ -81,8 +100,13 @@ function Profile() {
               <p className="flex items-center gap-3 text-neutral-700">
                 <FaPhone /> <span>{demoUser.phoneNumber}</span>
               </p>
-            </div>
-            <div className="pb-3 border-b">
+            </motion.div>
+            <motion.div
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0, transition: { delay: 0.15 } }}
+              className="pb-3 border-b"
+            >
               <h3 className="tracking-[5px] text-xl font-semibold uppercase mb-3 text-indigo-700">
                 Resumes
               </h3>
@@ -112,7 +136,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

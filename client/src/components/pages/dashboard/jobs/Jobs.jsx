@@ -1,6 +1,7 @@
 import { useState } from "react";
 import JobsFilter from "../../../JobsFilter.component";
 import JobsList from "../../../shared/JobsList.component";
+import { motion } from "framer-motion";
 
 const companies = [
   {
@@ -43,6 +44,7 @@ const companies = [
 
 const demoJobs = [
   {
+    id: 1,
     title: "Frontend Developer",
     description:
       "Develop and maintain the front-end of our web applications using React.js.",
@@ -56,6 +58,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 2,
     title: "Backend Developer",
     description:
       "Work on server-side logic and database operations using Node.js and MongoDB.",
@@ -69,6 +72,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 3,
     title: "Full Stack Developer",
     description: "Build and maintain web applications using the MERN stack.",
     company: companies[2], // Google
@@ -81,6 +85,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 4,
     title: "DevOps Engineer",
     description:
       "Manage infrastructure, CI/CD pipelines, and deployment processes.",
@@ -94,6 +99,7 @@ const demoJobs = [
     applications: [],
   },
   {
+    id: 5,
     title: "Data Scientist",
     description:
       "Analyze large datasets and develop machine learning models for predictive analytics.",
@@ -157,15 +163,26 @@ function Jobs() {
       );
     }
   };
+
   return (
-    <div className="flex-1">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
-        <h3 className="tracking-[5px] font-semibold uppercase bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text">
+        <motion.h3
+          viewport={{ once: true }}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="tracking-[5px] font-semibold uppercase bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text"
+        >
           Your next career move !
-        </h3>
-        <h1 className="text-4xl md:text-5xl mt-2 lg:text-6xl mb-4 font-semibold mx-auto ">
+        </motion.h3>
+        <motion.h1
+          viewport={{ once: true }}
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="text-4xl md:text-5xl mt-2 lg:text-6xl mb-4 font-semibold mx-auto "
+        >
           Search For Jobs
-        </h1>
+        </motion.h1>
         <JobsFilter />
         <div className="flex flex-col-reverse gap-4 lg:flex-row mb-16">
           <div className="flex-1">
@@ -173,7 +190,12 @@ function Jobs() {
             <JobsList jobs={demoJobs} withCompanyName={true} withLogo={true} />
             <JobsList jobs={demoJobs} withCompanyName={true} withLogo={true} />
           </div>
-          <div className="p-3 lg:p-4 border rounded-md lg:max-w-[300px] h-fit lg:sticky lg:top-5">
+          <motion.div
+            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="p-3 lg:p-4 border rounded-md lg:max-w-[300px] h-fit lg:sticky lg:top-5"
+          >
             {techSkills.map((techSkill) => (
               <span
                 onClick={() => editSkills(techSkill)}
@@ -187,7 +209,7 @@ function Jobs() {
                 {techSkill}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

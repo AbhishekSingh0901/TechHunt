@@ -11,7 +11,7 @@ function Navbar() {
   const user = false;
   return (
     <motion.div
-      className="border-b flex justify-between  items-center p-3 px-4 md:px-10"
+      className="border-b flex justify-between  items-center p-3 px-4 md:px-10 bg-white"
       initial={{ opacity: 0, y: -15 }}
       whileInView={{ opacity: 1, y: 0 }}
     >

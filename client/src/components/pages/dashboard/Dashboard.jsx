@@ -52,55 +52,9 @@ function Dashboard() {
           ))}
           <FaEarlybirds className="hidden md:block sticky top-[92vh] text-5xl opacity-[0.03]" />
         </div>
-        <Outlet />
-        {/* All Jobs */}
-        {/* <div className="flex-1">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
-            <h3 className="tracking-[5px] font-semibold uppercase bg-gradient-to-r from-indigo-700 via-pink-700 to-orange-700 text-transparent bg-clip-text">
-              Your next career move !
-            </h3>
-            <h1 className="text-4xl md:text-5xl mt-2 lg:text-6xl mb-4 font-semibold mx-auto ">
-              Search For Jobs
-            </h1>
-            <JobsFilter />
-            <div className="flex flex-col-reverse gap-4 lg:flex-row mb-16">
-              <div className="flex-1">
-                <JobsList
-                  jobs={demoJobs}
-                  withCompanyName={true}
-                  withLogo={true}
-                />
-                <JobsList
-                  jobs={demoJobs}
-                  withCompanyName={true}
-                  withLogo={true}
-                />
-                <JobsList
-                  jobs={demoJobs}
-                  withCompanyName={true}
-                  withLogo={true}
-                />
-              </div>
-              <div className="p-3 lg:p-4 border rounded-md lg:max-w-[300px] h-fit lg:sticky lg:top-5">
-                {techSkills.map((techSkill) => (
-                  <span
-                    onClick={() => editSkills(techSkill)}
-                    key={techSkill}
-                    className={` cursor-pointer text-sm  mx-2 p-1 px-2 hover:bg-indigo-400 hover:text-white border border-indigo-300 inline-block mb-2 rounded-full ${
-                      selectedSkills.includes(techSkill)
-                        ? "bg-indigo-600 text-white"
-                        : "text-card-foreground"
-                    }`}
-                  >
-                    {techSkill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div> */}
-        {/* Profile */}
-        {/* <Profile /> */}
+        <div className="flex-1 relative  bg-gray-50">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
