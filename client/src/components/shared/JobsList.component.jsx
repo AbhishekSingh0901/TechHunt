@@ -78,7 +78,7 @@ function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
             opacity: 1,
             transition: { delay: idx * 0.06 },
           }}
-          className="p-3 md:p-4 flex justify-between items-center hover:bg-neutral-50 transition-all duration-150"
+          className="p-3 bg-white mb-2 border-b md:p-4 flex justify-between items-center hover:bg-neutral-50 transition-all duration-150"
         >
           <Link
             key={job.title}
@@ -95,7 +95,7 @@ function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
             <div>
               {withCompanyName ? (
                 <Link
-                  to={`company/${job.company.id}`}
+                  to={`/dashboard/company/${job.company.id}`}
                   className="text-sm text-muted-foreground hover:border-b"
                   onClick={(e) => e.stopPropagation()}
                 >

@@ -14,8 +14,9 @@ import JobsHome from "./components/pages/jobs-home/Jobs.page";
 import Jobs from "./components/pages/dashboard/jobs/Jobs";
 import Profile from "./components/pages/dashboard/profile/Profile";
 import NotFound from "./components/pages/not-found/NotFound.page";
-import JobDetails from "./components/pages/jobs-home/JobDetails.component";
+import JobDetails from "./components/shared/JobDetails.component";
 import JobDescription from "./components/pages/jobs-home/JobDescription.page";
+import CompanyDetails from "./components/shared/CompanyDetails.component";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
         children: [
           { path: "jobs", element: <Jobs /> },
           { path: "jobs/:id", element: <JobDetails /> },
+          { path: "company/:id", element: <CompanyDetails /> },
           { path: "profile", element: <Profile /> },
           { path: "", element: <Navigate to="jobs" replace /> },
         ],

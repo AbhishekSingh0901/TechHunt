@@ -1,5 +1,5 @@
 import Navbar from "../../shared/Navbar.component";
-import JobDetails from "./JobDetails.component";
+import JobDetails from "../../shared/JobDetails.component";
 
 function JobDescription() {
   return (

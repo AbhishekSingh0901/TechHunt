@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
-import { Button } from "../../ui/button";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "../ui/button";
 import { motion } from "framer-motion";
+import { IoMdClose, IoMdCloseCircle } from "react-icons/io";
 
 const companies = [
   {
@@ -116,6 +117,7 @@ const demoJobs = [
 
 function JobDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const job = demoJobs.find((job) => job.id == id);
   if (!job) return <div>Job not found</div>;
   return (
@@ -125,8 +127,12 @@ function JobDetails() {
       whileInView={{ opacity: 1, y: 0 }}
       className="md:absolute md:h-3/4 md:bottom-0 overflow-x-hidden bg-white md:rounded-t-2xl w-full scrollbar-hidden shadow-2xl px-4 pt-4 md:p-6 lg:p-8 md:pb-24 lg:pb-24"
     >
+      <IoMdCloseCircle
+        onClick={() => navigate(-1)}
+        className="text-4xl absolute top-2 right-2 text-neutral-400 cursor-pointer hover:text-neutral-500 active:scale-95 transition-all dur"
+      />
       {/* Company logo */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mt-12 pr-3 mb-4">
         <div className="flex gap-3 items-center">
           <img className="h-16 md:h-20 lg:h-24" src={job.company.logo} />
           <div>
