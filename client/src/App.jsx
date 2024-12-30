@@ -18,21 +18,70 @@ import JobDetails from "./components/shared/JobDetails.component";
 import JobDescription from "./components/pages/jobs-home/JobDescription.page";
 import CompanyDetails from "./components/shared/CompanyDetails.component";
 
+// Example auth state (replace with actual logic)
+const isLoggedIn = false; // e.g., Boolean from Redux, Context, or some auth library
+
+function ProtectedRoute({ children }) {
+  if (!isLoggedIn) return <Navigate to="/login" replace />;
+  return children;
+}
+
+function PublicRoute({ children }) {
+  if (isLoggedIn) return <Navigate to="/dashboard" replace />;
+  return children;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: (
+      <PublicRoute>
+        <RootLayout />
+      </PublicRoute>
+    ),
     children: [
-      { index: true, element: <Home /> },
-      { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup /> },
+      {
+        index: true,
+        element: (
+          <PublicRoute>
+            <Home />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "signup",
+        element: (
+          <PublicRoute>
+            <Signup />
+          </PublicRoute>
+        ),
+      },
       { path: "jobs", element: <JobsHome /> },
-      { path: "jobs/:id", element: <JobDescription /> },
       { path: "recruiters", element: <Recruiters /> },
-      { path: "resume", element: <Resume /> },
+      { path: "jobs/:id", element: <JobDescription /> },
+      {
+        path: "resume",
+        element: (
+          <PublicRoute>
+            <Resume />
+          </PublicRoute>
+        ),
+      },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
         children: [
           { path: "jobs", element: <Jobs /> },
           { path: "jobs/:id", element: <JobDetails /> },
