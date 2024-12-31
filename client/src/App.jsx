@@ -17,51 +17,40 @@ import NotFound from "./components/pages/not-found/NotFound.page";
 import JobDetails from "./components/shared/JobDetails.component";
 import JobDescription from "./components/pages/jobs-home/JobDescription.page";
 import CompanyDetails from "./components/shared/CompanyDetails.component";
-
-// Example auth state (replace with actual logic)
-const isLoggedIn = false; // e.g., Boolean from Redux, Context, or some auth library
-
-function ProtectedRoute({ children }) {
-  if (!isLoggedIn) return <Navigate to="/login" replace />;
-  return children;
-}
-
-function PublicRoute({ children }) {
-  if (isLoggedIn) return <Navigate to="/dashboard" replace />;
-  return children;
-}
+import ProtectedRoutes from "./components/ProtectedRoutes.component";
+import PublicRoutes from "./components/PublicRoutes.component";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <PublicRoute>
+      <PublicRoutes>
         <RootLayout />
-      </PublicRoute>
+      </PublicRoutes>
     ),
     children: [
       {
         index: true,
         element: (
-          <PublicRoute>
+          <PublicRoutes>
             <Home />
-          </PublicRoute>
+          </PublicRoutes>
         ),
       },
       {
         path: "login",
         element: (
-          <PublicRoute>
+          <PublicRoutes>
             <Login />
-          </PublicRoute>
+          </PublicRoutes>
         ),
       },
       {
         path: "signup",
         element: (
-          <PublicRoute>
+          <PublicRoutes>
             <Signup />
-          </PublicRoute>
+          </PublicRoutes>
         ),
       },
       { path: "jobs", element: <JobsHome /> },
@@ -70,17 +59,17 @@ const router = createBrowserRouter([
       {
         path: "resume",
         element: (
-          <PublicRoute>
+          <PublicRoutes>
             <Resume />
-          </PublicRoute>
+          </PublicRoutes>
         ),
       },
       {
         path: "dashboard",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoutes>
             <Dashboard />
-          </ProtectedRoute>
+          </ProtectedRoutes>
         ),
         children: [
           { path: "jobs", element: <Jobs /> },
