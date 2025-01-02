@@ -16,13 +16,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "sonner";
-import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "../../../redux/authSlice";
+// import axios from "axios";
+// import { toast } from "sonner";
+
 import { FiLoader } from "react-icons/fi";
 import Logo from "../../ui/logo";
 import { motion } from "framer-motion";
+import { useLoginUser } from "../../../features/authentication/useLoginUser";
+
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -32,8 +33,9 @@ const loginSchema = z.object({
 });
 function Login() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
+
+  const { login, isLoading } = useLoginUser();
+
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -43,28 +45,7 @@ function Login() {
     },
   });
   async function onSubmit(data) {
-    try {
-      dispatch(setLoading(true));
-      const res = await axios.post(
-        "http://localhost:3000/api/v1/user/login",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      if (res.data.success) {
-        toast.success("Login successful");
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
-      toast.error(e.response.data.message);
-    } finally {
-      setLoading(false);
-    }
+    login(data);
   }
 
   return (
@@ -170,7 +151,7 @@ function Login() {
                   </FormItem>
                 )}
               />
-              {loading ? (
+              {isLoading ? (
                 <Button
                   variant="disabled"
                   disabled={true}

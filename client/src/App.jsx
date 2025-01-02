@@ -19,10 +19,18 @@ import JobDescription from "./components/pages/jobs-home/JobDescription.page";
 import CompanyDetails from "./components/shared/CompanyDetails.component";
 import ProtectedRoutes from "./components/ProtectedRoutes.component";
 import PublicRoutes from "./components/PublicRoutes.component";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: (
       <PublicRoutes>
         <RootLayout />
@@ -31,46 +39,37 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <PublicRoutes>
-            <Home />
-          </PublicRoutes>
-        ),
+        element: <Home />,
       },
       {
         path: "login",
-        element: (
-          <PublicRoutes>
-            <Login />
-          </PublicRoutes>
-        ),
+        element: <Login />,
       },
       {
         path: "signup",
-        element: (
-          <PublicRoutes>
-            <Signup />
-          </PublicRoutes>
-        ),
+        element: <Signup />,
       },
       { path: "jobs", element: <JobsHome /> },
       { path: "recruiters", element: <Recruiters /> },
       { path: "jobs/:id", element: <JobDescription /> },
       {
         path: "resume",
-        element: (
-          <PublicRoutes>
-            <Resume />
-          </PublicRoutes>
-        ),
+        element: <Resume />,
       },
+
+      // Add more routes as needed
+    ],
+  },
+  {
+    element: (
+      <ProtectedRoutes>
+        <RootLayout />
+      </ProtectedRoutes>
+    ),
+    children: [
       {
         path: "dashboard",
-        element: (
-          <ProtectedRoutes>
-            <Dashboard />
-          </ProtectedRoutes>
-        ),
+        element: <Dashboard />,
         children: [
           { path: "jobs", element: <Jobs /> },
           { path: "jobs/:id", element: <JobDetails /> },
@@ -79,7 +78,6 @@ const router = createBrowserRouter([
           { path: "", element: <Navigate to="jobs" replace /> },
         ],
       },
-      // Add more routes as needed
     ],
   },
   {
@@ -90,7 +88,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}></RouterProvider>;
+    </QueryClientProvider>
+  );
 }
 
 export default App;
