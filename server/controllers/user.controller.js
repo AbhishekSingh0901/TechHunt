@@ -116,3 +116,26 @@ export const updateUserProfile = async (req, res) => {
     console.log(err);
   }
 };
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const userId = req.id; // middleware authentication
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found.",
+        success: false,
+      });
+    } else {
+      res.status(200).json({
+        user,
+        success: true,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: "Server error",
+      success: false,
+    });
+  }
+};
