@@ -1,9 +1,6 @@
-import Navbar from "../../shared/Navbar.component";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-// import { toast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,9 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 import { FiLoader } from "react-icons/fi";
 import Logo from "../../ui/logo";
@@ -32,8 +27,6 @@ const loginSchema = z.object({
   }),
 });
 function Login() {
-  const navigate = useNavigate();
-
   const { login, isLoading } = useLoginUser();
 
   const form = useForm({

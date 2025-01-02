@@ -12,7 +12,6 @@ export async function loginUser(data) {
     }
   );
   if (res.data.success === true) {
-    console.log(res.data);
     return res.data;
   } else {
     throw new Error(res.data.message);
@@ -20,11 +19,23 @@ export async function loginUser(data) {
 }
 
 export async function getUser() {
+  console.log("running");
   const res = await axios.get("http://localhost:3000/api/v1/user/get-profile", {
     withCredentials: true,
   });
   if (res.data.success) {
     return res.data.user;
+  } else {
+    return undefined;
+  }
+}
+
+export async function logoutUser() {
+  const res = await axios.get("http://localhost:3000/api/v1/user/logout", {
+    withCredentials: true,
+  });
+  if (res.data.success) {
+    return res.data;
   } else {
     throw new Error(res.data.message);
   }

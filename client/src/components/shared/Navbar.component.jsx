@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import illustration from "../../assets/illustration.png";
 import Logo from "../ui/logo";
 import { motion } from "framer-motion";
+import { useUser } from "../../features/authentication/useUser";
+import { useLogoutUser } from "../../features/authentication/useLogoutUser";
 function Navbar() {
-  const user = false;
+  const { user } = useUser();
+  const { logout, isLoading } = useLogoutUser();
   return (
     <motion.div
       className="border-b flex justify-between  items-center p-3 px-4 md:px-10 bg-white"
@@ -52,7 +55,7 @@ function Navbar() {
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <div>
-                    <h4 className=" font-medium">Full Name</h4>
+                    <h4 className=" font-medium">{user.fullName}</h4>
                     <p className=" text-sm text-muted-foreground">
                       Lorem ipsum dolor sit amet.
                     </p>
@@ -63,7 +66,12 @@ function Navbar() {
                     <FiEdit2 />
                     Edit Profile
                   </Button>
-                  <Button variant="link" className="p-0 gap-1">
+                  <Button
+                    variant="link"
+                    onClick={logout}
+                    disabled={isLoading}
+                    className="p-0 gap-1"
+                  >
                     <FiLogOut />
                     Logout
                   </Button>

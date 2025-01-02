@@ -66,7 +66,6 @@ import { Link } from "react-router-dom";
         </Link> */
 }
 function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
-  console.log(jobs);
   return (
     <div className="max-w-4xl w-full">
       {jobs.map((job, idx) => (

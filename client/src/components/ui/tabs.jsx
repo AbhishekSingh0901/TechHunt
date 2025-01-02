@@ -13,11 +13,9 @@ export const Tabs = ({
   const [active, setActive] = useState(propTabs[0]);
   const [tabs, setTabs] = useState(propTabs);
 
-  console.log(propTabs);
   const moveToNextTab = () => {
     const newTabs = tabs.slice(1, tabs.length);
     newTabs.push(tabs[0]);
-    console.log(newTabs);
 
     setTabs(newTabs);
     setActive(newTabs[0]);

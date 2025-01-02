@@ -44,8 +44,7 @@ const featurs = [
 
 function Resume() {
   return (
-    <div className=" overflow-hidden">
-      <Navbar />
+    <div className="overflow-hidden">
       <div className="flex flex-col px-4 lg:flex-row mb-20 overflow-clip justify-between gap-4 my-12 lg:my-20 w-screen overflow-x-clip">
         <div className="mx-auto  max-w-3xl shrink-0 lg:mx-0 lg:mt-0 lg:max-w-xl lg:pt-8 lg:ml-20">
           <div className="relative  w-full mt-16 font-bold flex flex-col gap-8 pb-8 text-center lg:text-left">

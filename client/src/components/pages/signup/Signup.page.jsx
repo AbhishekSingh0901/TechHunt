@@ -16,8 +16,6 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "../../../redux/authSlice";
 import { FiLoader } from "react-icons/fi";
 import Logo from "../../ui/logo";
 import { motion } from "framer-motion";
@@ -52,6 +50,7 @@ const FormSchema = z.object({
 });
 
 function Signup() {
+  const loading = false;
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -63,45 +62,40 @@ function Signup() {
       profile: "",
     },
   });
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
 
   const navigate = useNavigate();
 
   async function onSubmit(data) {
-    dispatch(setLoading(true));
-    const formData = new FormData();
-    formData.append("fullName", data.fullName);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("phoneNumber", data.phoneNumber);
-    formData.append("role", data.role);
-
-    if (data.profile) {
-      formData.append("profile", data.profile);
-    }
-
-    try {
-      const res = await axios.post(
-        "http://localhost:3000/api/v1/user/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
-      if (res.data.success) {
-        toast.success(res.data.message);
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
-      toast.error(e.response.data.message);
-    } finally {
-      setLoading(false);
-    }
+    // const formData = new FormData();
+    // formData.append("fullName", data.fullName);
+    // formData.append("email", data.email);
+    // formData.append("password", data.password);
+    // formData.append("phoneNumber", data.phoneNumber);
+    // formData.append("role", data.role);
+    // if (data.profile) {
+    //   formData.append("profile", data.profile);
+    // }
+    // try {
+    //   const res = await axios.post(
+    //     "http://localhost:3000/api/v1/user/register",
+    //     formData,
+    //     {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   if (res.data.success) {
+    //     toast.success(res.data.message);
+    //     navigate("/");
+    //   }
+    // } catch (e) {
+    //   console.log(e);
+    //   toast.error(e.response.data.message);
+    // } finally {
+    //   setLoading(false);
+    // }
   }
 
   return (

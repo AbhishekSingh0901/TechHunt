@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useUser } from "../features/authentication/useUser";
 
-function PublicRoutes({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  if (isLoggedIn) return <Navigate to="/dashboard" replace />;
-  return children;
+function PublicRoutes() {
+  const { isAuthenticated } = useUser();
+
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />;
+  return <Outlet />;
 }
 
 export default PublicRoutes;

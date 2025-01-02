@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Footer from "../../shared/Footer.component";
-import Navbar from "../../shared/Navbar.component";
 import { Button } from "../../ui/button";
 
 import { motion } from "framer-motion";
@@ -9,7 +8,6 @@ import { AnimatedTabs } from "./components/AnimatedTab.component";
 function Recruiters() {
   return (
     <div>
-      <Navbar />
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="w-full text-center my-16 font-bold flex flex-col gap-8">
           <motion.h3

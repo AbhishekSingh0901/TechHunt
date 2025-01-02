@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function NotFound() {
   return (
-    <div className="h-screen w-screen bg-gradient-to-br from-indigo-300 via-indigo-100 to-indigo-200 flex">
+    <div className="h-screen w-screen bg-gradient-to-br from-indigo-300 via-indigo-100 to-indigo-200 flex overflow-hidden">
       <div className="h-full w-full  flex justify-center items-center">
         <div className="flex flex-col relative text-center mt-32">
           <motion.img
