@@ -1,8 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import axios from "axios";
-// import { toast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,11 +12,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
+import { Link } from "react-router-dom";
 import { FiLoader } from "react-icons/fi";
 import Logo from "../../ui/logo";
 import { motion } from "framer-motion";
+import { useSignUpUser } from "../../../features/authentication/useSignUpUser";
 
 const FormSchema = z.object({
   fullName: z.string().min(2, {
@@ -50,7 +48,7 @@ const FormSchema = z.object({
 });
 
 function Signup() {
-  const loading = false;
+  const { register, isLoading } = useSignUpUser();
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -63,39 +61,17 @@ function Signup() {
     },
   });
 
-  const navigate = useNavigate();
-
   async function onSubmit(data) {
-    // const formData = new FormData();
-    // formData.append("fullName", data.fullName);
-    // formData.append("email", data.email);
-    // formData.append("password", data.password);
-    // formData.append("phoneNumber", data.phoneNumber);
-    // formData.append("role", data.role);
-    // if (data.profile) {
-    //   formData.append("profile", data.profile);
-    // }
-    // try {
-    //   const res = await axios.post(
-    //     "http://localhost:3000/api/v1/user/register",
-    //     formData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //       withCredentials: true,
-    //     }
-    //   );
-    //   if (res.data.success) {
-    //     toast.success(res.data.message);
-    //     navigate("/");
-    //   }
-    // } catch (e) {
-    //   console.log(e);
-    //   toast.error(e.response.data.message);
-    // } finally {
-    //   setLoading(false);
-    // }
+    const formData = new FormData();
+    formData.append("fullName", data.fullName);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("phoneNumber", data.phoneNumber);
+    formData.append("role", data.role);
+    if (data.profile) {
+      formData.append("profile", data.profile);
+    }
+    register(formData);
   }
 
   return (
@@ -241,7 +217,7 @@ function Signup() {
                   )}
                 />
               </div>
-              {loading ? (
+              {isLoading ? (
                 <Button
                   variant="disabled"
                   disabled={true}
