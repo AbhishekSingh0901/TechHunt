@@ -8,7 +8,6 @@ import Login from "./components/pages/login/Login.page";
 import Signup from "./components/pages/signup/Signup.page";
 import Recruiters from "./components/pages/recruiteres-home/Recruiters.page";
 import Resume from "./components/pages/resume-builder-home/Resume.page";
-import RootLayout from "./layout/PublicLayout";
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import JobsHome from "./components/pages/jobs-home/Jobs.page";
 import Jobs from "./components/pages/dashboard/jobs/Jobs";
@@ -22,6 +21,8 @@ import PublicRoutes from "./components/PublicRoutes.component";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PublicLayout from "./layout/PublicLayout";
 import ProtectedLayout from "./layout/ProtectedLayout";
+import RecruitersDashboard from "./components/pages/recruiters-dashboard/RecruitersDashboard";
+import RecruitersLayout from "./layout/RecruitersLayout";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -81,6 +82,16 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+    ],
+  },
+  {
+    element: <RecruitersLayout />,
+    children: [
+      {
+        path: "/recruiters-dashboard",
+        element: <RecruitersDashboard />,
+        children: [],
       },
     ],
   },
