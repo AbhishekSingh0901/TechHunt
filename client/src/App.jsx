@@ -23,6 +23,7 @@ import PublicLayout from "./layout/PublicLayout";
 import ProtectedLayout from "./layout/ProtectedLayout";
 import RecruitersDashboard from "./components/pages/recruiters-dashboard/RecruitersDashboard";
 import RecruitersLayout from "./layout/RecruitersLayout";
+import Applications from "./components/pages/recruiters-dashboard/job-applications/Applications";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -91,7 +92,10 @@ const router = createBrowserRouter([
       {
         path: "/recruiters-dashboard",
         element: <RecruitersDashboard />,
-        children: [],
+        children: [
+          { path: "applications", element: <Applications /> },
+          { path: "", element: <Navigate to="applications" replace /> },
+        ],
       },
     ],
   },
