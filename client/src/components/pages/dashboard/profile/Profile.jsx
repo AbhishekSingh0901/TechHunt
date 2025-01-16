@@ -1,6 +1,7 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa6";
 import { FileUpload } from "../../../ui/file-upload";
 import { motion } from "framer-motion";
+import { useUser } from "../../../../features/authentication/useUser";
 
 const demoUser = {
   fullName: "John Doe",
@@ -43,6 +44,8 @@ const demoUser = {
 };
 
 function Profile() {
+  const { user } = useUser();
+  console.log(user);
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 my-16">
@@ -62,9 +65,11 @@ function Profile() {
               className="pb-3 border-b"
             >
               <h1 className="text-4xl lg:text-5xl mb-3  font-medium text-neutral-800">
-                {demoUser.fullName}
+                {user.fullName}
               </h1>
-              <p className="text-neutral-600 ">{demoUser.profile.bio}</p>
+              <p className="text-neutral-600 ">
+                {user.profile?.bio || "hello"}
+              </p>
             </motion.div>
             <motion.div
               viewport={{ once: true }}
@@ -76,7 +81,7 @@ function Profile() {
                 Skills
               </h3>
 
-              {demoUser.profile.skills.map((skill) => (
+              {user.profile.skills.map((skill) => (
                 <span
                   key={skill}
                   className="mr-3 p-1 px-3 text-muted-foreground bg-indigo-50 inline-block mb-2 rounded-full"
@@ -95,10 +100,10 @@ function Profile() {
                 Contact
               </h3>
               <p className="flex items-center gap-3 mb-2 text-neutral-700">
-                <FaEnvelope /> <span>{demoUser.email}</span>
+                <FaEnvelope /> <span>{user.email}</span>
               </p>
               <p className="flex items-center gap-3 text-neutral-700">
-                <FaPhone /> <span>{demoUser.phoneNumber}</span>
+                <FaPhone /> <span>{user.phoneNumber}</span>
               </p>
             </motion.div>
             <motion.div
@@ -111,7 +116,7 @@ function Profile() {
                 Resumes
               </h3>
               <div className="grid grid-flow-col grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                {demoUser.profile.resumeURIs.map((resume) => (
+                {user.profile.resumeURIs.map((resume) => (
                   <div
                     key={resume.title}
                     className="flex flex-col gap-2 items-center"
