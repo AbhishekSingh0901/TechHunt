@@ -8,7 +8,7 @@ function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
     <div className="max-w-4xl w-full">
       {jobs.map((job, idx) => (
         <motion.div
-          key={job.id}
+          key={job._id}
           viewport={{ once: true }}
           initial={{ opacity: 0 }}
           whileInView={{
@@ -19,7 +19,7 @@ function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
         >
           <Link
             key={job.title}
-            to={`${job.id}`}
+            to={`${job._id}`}
             className="flex gap-3 flex-grow"
           >
             {withLogo && (
@@ -32,7 +32,7 @@ function JobsList({ jobs, withLogo = true, withCompanyName = false }) {
             <div>
               {withCompanyName ? (
                 <Link
-                  to={`/dashboard/company/${job.company.id}`}
+                  to={`/dashboard/company/${job.company._id}`}
                   className="text-sm text-muted-foreground hover:border-b"
                   onClick={(e) => e.stopPropagation()}
                 >
