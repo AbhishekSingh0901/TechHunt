@@ -2,6 +2,7 @@ import { useState } from "react";
 import JobsFilter from "../../../JobsFilter.component";
 import JobsList from "../../../shared/JobsList.component";
 import { motion } from "framer-motion";
+import { useJobs } from "../../../../features/jobs/useJobs";
 
 const companies = [
   {
@@ -149,6 +150,7 @@ const techSkills = [
 
 function Jobs() {
   const [selectedSkills, setSelectedSkills] = useState([]);
+  const { jobs, isLoading } = useJobs();
 
   const editSkills = (skill) => {
     const hasSkill = selectedSkills.includes(skill);
@@ -186,9 +188,11 @@ function Jobs() {
         <JobsFilter />
         <div className="flex flex-col-reverse gap-4 lg:flex-row mb-16">
           <div className="flex-1">
-            <JobsList jobs={demoJobs} withCompanyName={true} withLogo={true} />
-            <JobsList jobs={demoJobs} withCompanyName={true} withLogo={true} />
-            <JobsList jobs={demoJobs} withCompanyName={true} withLogo={true} />
+            {isLoading ? (
+              <div>loading</div>
+            ) : (
+              <JobsList jobs={jobs} withCompanyName={true} withLogo={true} />
+            )}
           </div>
           <motion.div
             viewport={{ once: true }}
